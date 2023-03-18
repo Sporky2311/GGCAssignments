@@ -5,7 +5,6 @@ using UnityEngine;
 public class BillardController : MonoBehaviour
 {
 
-    private int score = 0;
     public GameObject player;
     
 

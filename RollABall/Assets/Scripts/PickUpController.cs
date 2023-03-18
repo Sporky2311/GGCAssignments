@@ -21,7 +21,7 @@ public class PickUpController: MonoBehaviour
     {
         int num = Random.Range(0, spawnFreqChance);
         bool spawn = (num == 10);
-        if (spawn && !pickupAlive)
+        if (spawn && !pickupAlive && pickupPrefab != null)
         {
             spawnPickup(pickupPrefab);
         }
@@ -36,12 +36,14 @@ public class PickUpController: MonoBehaviour
 
     private void spawnPickup(GameObject pickupPrefab)
     {
-        
-        Vector3 pos = transform.position + new Vector3(RandomSpawnLocationX, 0, RandomSpawnLocationZ);
-        RandomSpawnLocationX = Random.Range(-9, 9);
-        RandomSpawnLocationX = Random.Range(-9, 9);
-        currentPickup =  Instantiate(pickupPrefab, new Vector3(RandomSpawnLocationX, 0.5f, RandomSpawnLocationZ), Quaternion.identity);
-        pickupAlive = true;
+        if (pickupPrefab != null)
+        {
+            Vector3 pos = transform.position + new Vector3(RandomSpawnLocationX, 0, RandomSpawnLocationZ);
+            RandomSpawnLocationX = Random.Range(-9, 9);
+            RandomSpawnLocationZ = Random.Range(-9, 9);
+            currentPickup = Instantiate(pickupPrefab, new Vector3(RandomSpawnLocationX, 0.5f, RandomSpawnLocationZ), Quaternion.identity);
+            pickupAlive = true;
+        }
     }
 
     public void breakPickup()

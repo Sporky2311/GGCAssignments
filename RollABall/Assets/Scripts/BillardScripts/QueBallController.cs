@@ -22,11 +22,11 @@ public class QueBallController : MonoBehaviour
     public GameObject Restart;
 
 
-    MyControls inputAction = new MyControls();
+    
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   MyControls inputAction = new MyControls();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -79,7 +79,7 @@ public class QueBallController : MonoBehaviour
     {
         Time.timeScale = 1;
         score = 0;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Billards");
     }
 
     public void addScore()
